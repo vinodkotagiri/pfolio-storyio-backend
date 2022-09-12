@@ -1,5 +1,6 @@
 const User = require('../models/user');
 
+//Return all the users in the database
 const users = async (req, res) => {
   try {
     const users = await User.find();
