@@ -33,7 +33,13 @@ const login = async (req, res) => {
 			process.env.JWT_SECRET,
 			{ expiresIn: '7d' }
 		)
-		res.status(200).json({ message: 'OK', token: accessToken })
+		res.status(200).json({
+			user: {
+				id: user._id,
+				email: user._email,
+			},
+			token: accessToken,
+		})
 	} catch (error) {
 		res.status(500).json({ error: 'Internal Error! Please try again later' })
 	}
