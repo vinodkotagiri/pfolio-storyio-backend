@@ -1,7 +1,6 @@
-const User = require('../models/user')
+const User = require('../../models/user')
 const { nanoid } = require('nanoid')
-
-const SendResetEmail = require('../middleware/mailer')
+const SendResetEmail = require('../../helpers/mailer')
 const forgotPassword = async (req, res) => {
 	const { email } = req.body
 	const user = await User.findOne({ email })

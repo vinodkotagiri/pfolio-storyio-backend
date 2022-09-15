@@ -1,16 +1,19 @@
 const express = require('express')
 const router = express.Router()
 
-const users = require('../controllers/users')
-const login = require('../controllers/login')
-const register = require('../controllers/register')
-const forgotPassword = require('../controllers/forgotPassword')
-const editUser = require('../controllers/editUser')
-const deleteUser = require('../controllers/deleteUser')
-const resetPassword = require('../controllers/resetPassword')
-router.get('/', users)
-router.post('/register', register)
-router.post('/login', login)
+const {
+	AllUsers,
+	registerUser,
+	loginUser,
+	forgotPassword,
+	resetPassword,
+	editUser,
+	deleteUser,
+} = require('../controllers/user')
+
+router.get('/', AllUsers)
+router.post('/register', registerUser)
+router.post('/login', loginUser)
 router.post('/forgot-password', forgotPassword)
 router.post('/reset-password', resetPassword)
 router.put('/:id', editUser)

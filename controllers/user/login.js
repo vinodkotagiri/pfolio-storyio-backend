@@ -1,4 +1,4 @@
-const User = require('../models/user')
+const User = require('../../models/user')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -29,7 +29,7 @@ const login = async (req, res) => {
 	try {
 		//Generate access token
 		const accessToken = jwt.sign(
-			{ id: user._id, email: user._email },
+			{ _id: user._id, email: user._email },
 			process.env.JWT_SECRET,
 			{ expiresIn: '7d' }
 		)

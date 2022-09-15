@@ -1,4 +1,4 @@
-const User = require('../models/user')
+const User = require('../../models/user')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -37,7 +37,7 @@ register = async (req, res) => {
 		user.save()
 		//Generate a JWT token
 		const token = jwt.sign(
-			{ id: user._id, email: user._email },
+			{ _id: user._id, email: user._email },
 			process.env.JWT_SECRET,
 			{ expiresIn: '7d' }
 		)
