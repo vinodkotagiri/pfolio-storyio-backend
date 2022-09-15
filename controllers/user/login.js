@@ -11,10 +11,9 @@ const login = async (req, res) => {
 
 	//If user doesn't exists
 	if (!user) {
-		res.status(404).json({
+		return res.status(404).json({
 			error: `User with email '${email.toLowerCase()}' does not exist`,
 		})
-		return
 	}
 	//IF Email exists
 	//Verify the password
@@ -22,21 +21,23 @@ const login = async (req, res) => {
 
 	//If password not matching
 	if (!verify) {
-		res.status(401).json({ error: 'Unautohrized!, Invalid password' })
-		return
+		return res.status(401).json({ error: 'Unautohrized!, Invalid password' })
 	}
 	//If everything is good
 	try {
 		//Generate access token
 		const accessToken = jwt.sign(
-			{ _id: user._id, email: user._email },
+			{ _id: user._id, email: user.email },
 			process.env.JWT_SECRET,
 			{ expiresIn: '7d' }
 		)
+
 		res.status(200).json({
 			user: {
 				id: user._id,
-				email: user._email,
+				name: user.name,
+				email: user.email,
+				role: user.role,
 			},
 			token: accessToken,
 		})

@@ -5,6 +5,7 @@ const editUser = require('./edit')
 const deleteUser = require('./delete')
 const forgotPassword = require('./forgotPassword')
 const resetPassword = require('./resetPassword')
+const currentAdmin = require('./currentAdmin')
 module.exports = {
 	AllUsers,
 	registerUser,
@@ -13,4 +14,5 @@ module.exports = {
 	deleteUser,
 	forgotPassword,
 	resetPassword,
+	currentAdmin,
 }

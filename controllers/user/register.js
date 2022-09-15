@@ -8,10 +8,9 @@ register = async (req, res) => {
 
 	//Password length lessthan 6
 	if (password.length < 6) {
-		res
+		return res
 			.status(400)
 			.json({ error: 'Password length must be at least 6 characters' })
-		return
 	}
 
 	//Check if the user is already exists in db
@@ -19,10 +18,9 @@ register = async (req, res) => {
 
 	//If user exists in database
 	if (check) {
-		res
+		return res
 			.status(400)
 			.json({ error: `User with email ${check.email} already exists` })
-		return
 	}
 
 	//If user doesnot exist
